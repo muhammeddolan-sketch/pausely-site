@@ -3,40 +3,346 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pausely — Private Menopause Tracker</title>
-<meta name="description" content="Pausely helps you track menopause symptoms privately. No account, no cloud — your data stays on your phone.">
+<title>Pausely — Private Menopause Symptom Tracker</title>
+<meta name="description" content="Track menopause and perimenopause symptoms in seconds a day. No account, no cloud, no ads — everything stays on your phone. Honest pattern insights and doctor-ready PDF reports.">
+<link rel="canonical" href="https://muhammeddolan-sketch.github.io/pausely-site/">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="theme-color" content="#6E4488">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pausely">
+<meta property="og:title" content="Pausely — Private Menopause Symptom Tracker">
+<meta property="og:description" content="Track menopause symptoms in seconds a day. No account, no cloud — your data never leaves your phone.">
+<meta property="og:url" content="https://muhammeddolan-sketch.github.io/pausely-site/">
+<meta property="og:image" content="https://muhammeddolan-sketch.github.io/pausely-site/icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pausely — Private Menopause Symptom Tracker">
+<meta name="twitter:description" content="Track menopause symptoms in seconds a day. No account, no cloud — your data never leaves your phone.">
+<meta name="twitter:image" content="https://muhammeddolan-sketch.github.io/pausely-site/icon-512.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pausely: Menopause Tracker",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "iOS, Android",
+  "description": "A privacy-first menopause and perimenopause symptom tracker. No account, no cloud — all data is stored on the user's device.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free to use. Premium unlocks trends, unlimited history and doctor-ready PDF reports."
+  }
+}
+</script>
+
 <style>
-  :root { color-scheme: light dark; }
+  :root {
+    color-scheme: light dark;
+    --plum-900: #3a2149;
+    --plum-700: #553168;
+    --plum-500: #6E4488;
+    --plum-300: #8A5AA6;
+    --lilac: #EAD9F2;
+    --ink: #2b2233;
+    --paper: #faf7fc;
+    --card: #ffffff;
+    --line: #e6dcee;
+    --muted: #6a5c78;
+    --radius: 18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #ece5f2;
+      --paper: #17111d;
+      --card: #211829;
+      --line: #362a42;
+      --muted: #a596b3;
+    }
+  }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    margin: 0; min-height: 100vh; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; text-align: center;
+    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, #8A5AA6, #6E4488 55%, #553168);
-    color: #fff; padding: 2rem 1.25rem;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
   }
-  img.logo { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 12px 40px rgba(20,8,28,.35); }
-  h1 { margin: 1.2rem 0 .4rem; font-size: 2.4rem; letter-spacing: -1px; }
-  .tag { margin: 0 0 1.6rem; font-size: 1.15rem; color: #EAD9F2; max-width: 26rem; }
+  a { color: var(--plum-500); }
+  @media (prefers-color-scheme: dark) { a { color: #c9a3e0; } }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    background: linear-gradient(160deg, var(--plum-300), var(--plum-500) 55%, var(--plum-700));
+    color: #fff;
+    text-align: center;
+    padding: 4rem 1.25rem 3.5rem;
+  }
+  .hero img.logo {
+    width: 96px; height: 96px; border-radius: 24px;
+    box-shadow: 0 14px 44px rgba(20,8,28,.4);
+  }
+  .hero h1 {
+    margin: 1.1rem 0 .5rem;
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    letter-spacing: -1.2px;
+    line-height: 1.15;
+  }
+  .hero .tag {
+    margin: 0 auto 1.8rem;
+    font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+    color: var(--lilac);
+    max-width: 34rem;
+  }
+  .pills { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
   .pill {
-    display: inline-block; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25);
-    border-radius: 999px; padding: .45rem 1rem; margin: .2rem; font-size: .92rem;
+    background: rgba(255,255,255,.13);
+    border: 1px solid rgba(255,255,255,.26);
+    border-radius: 999px;
+    padding: .42rem 1rem;
+    font-size: .92rem;
   }
-  footer { margin-top: 2.5rem; font-size: .9rem; }
-  footer a { color: #EAD9F2; }
+  .cta {
+    display: inline-block;
+    margin-top: 2rem;
+    background: #fff; color: var(--plum-700);
+    font-weight: 600; text-decoration: none;
+    border-radius: 999px;
+    padding: .8rem 1.9rem;
+    box-shadow: 0 10px 30px rgba(20,8,28,.28);
+  }
+  .cta:hover { transform: translateY(-1px); }
+  .cta-note { margin: .8rem 0 0; font-size: .88rem; color: var(--lilac); }
+
+  /* ---------- sections ---------- */
+  section { padding: 3.5rem 0; }
+  section h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    letter-spacing: -.5px;
+    margin: 0 0 .4rem;
+  }
+  section .lede { color: var(--muted); margin: 0 0 2rem; max-width: 42rem; }
+
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+  }
+  .card h3 { margin: .1rem 0 .5rem; font-size: 1.08rem; }
+  .card p { margin: 0; color: var(--muted); font-size: .96rem; }
+  .card .emoji { font-size: 1.5rem; line-height: 1; }
+
+  /* ---------- screenshots ---------- */
+  .shots {
+    display: flex; gap: 1rem; overflow-x: auto;
+    padding: .5rem .25rem 1.5rem;
+    scroll-snap-type: x mandatory;
+  }
+  .shots figure { margin: 0; flex: 0 0 210px; scroll-snap-align: center; }
+  .shots img {
+    width: 100%; height: auto; display: block;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--card);
+  }
+  .shots figcaption {
+    margin-top: .6rem; font-size: .86rem; color: var(--muted); text-align: center;
+  }
+
+  /* ---------- privacy band ---------- */
+  .band {
+    background: var(--plum-900);
+    color: #fff;
+  }
+  .band .lede { color: var(--lilac); }
+  .band .card {
+    background: rgba(255,255,255,.06);
+    border-color: rgba(255,255,255,.14);
+  }
+  .band .card p { color: var(--lilac); }
+
+  /* ---------- faq ---------- */
+  details {
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 0;
+  }
+  details summary {
+    cursor: pointer; font-weight: 600; list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 1.3rem; }
+  details[open] summary::after { content: "−"; }
+  details p { color: var(--muted); margin: .7rem 0 0; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2.5rem 1.25rem 3rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: .92rem;
+  }
+  footer .disclaimer { max-width: 34rem; margin: 1rem auto 0; font-size: .84rem; opacity: .8; }
 </style>
 </head>
 <body>
-  <img class="logo" src="icon.png" alt="Pausely icon" onerror="this.style.display='none'">
-  <h1>Pausely</h1>
-  <p class="tag">Track menopause symptoms privately. No account, no cloud — your data stays on your phone.</p>
-  <div>
-    <span class="pill">🔒 Private by design</span>
-    <span class="pill">📊 Honest insights</span>
-    <span class="pill">📄 Doctor-ready reports</span>
+
+<header class="hero">
+  <img class="logo" src="icon.png" alt="Pausely app icon" onerror="this.style.display='none'">
+  <h1>Understand your body,<br>one day at a time</h1>
+  <p class="tag">Pausely tracks menopause and perimenopause symptoms in seconds a day — and shows you the patterns behind them. No account. No cloud. No ads.</p>
+  <div class="pills">
+    <span class="pill">🔒 Data never leaves your phone</span>
+    <span class="pill">📊 Honest statistics, not AI guesswork</span>
+    <span class="pill">📄 Doctor-ready PDF reports</span>
   </div>
-  <footer>
-    <a href="privacy.html">Privacy Policy</a> · <a href="mailto:muhammeddolan@gmail.com">Contact</a>
-  </footer>
+  <a class="cta" href="mailto:muhammeddolan@gmail.com?subject=Pausely%20beta">Join the beta</a>
+  <p class="cta-note">Premium is free for beta testers. iOS and Android.</p>
+</header>
+
+<main>
+
+<section class="wrap">
+  <h2>What it does</h2>
+  <p class="lede">Three things, done properly, instead of twenty done vaguely.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="emoji">⏱️</div>
+      <h3>A 10-second check-in</h3>
+      <p>Hot flashes, night sweats, sleep, mood, brain fog, joint pain, fatigue — rate what matters to you with a couple of taps. Tag caffeine, alcohol, stress or exercise while you're there.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🔍</div>
+      <h3>Patterns you can trust</h3>
+      <p>"On caffeine days, your hot flashes averaged 40% higher." Every insight shows how many days it's based on, and stays quiet until there's enough data to mean something.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🩺</div>
+      <h3>One page for your doctor</h3>
+      <p>Months of logs become a clean PDF: symptom averages, cycle events, lifestyle factors, observed patterns. Ten minutes of "where do I start?" becomes one page they can scan.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🌙</div>
+      <h3>Sleep, if you want it</h3>
+      <p>Optionally read last night's sleep from Apple Health or Health Connect. Read-only, opt-in, and never stored — it's shown next to your symptoms and then forgotten.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🔐</div>
+      <h3>Backups only you can open</h3>
+      <p>Export everything as a single file encrypted with your own passphrase. Put it in iCloud, Drive, a USB stick — wherever you like. We never receive a copy.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🌍</div>
+      <h3>English, Türkçe, Deutsch</h3>
+      <p>Fully translated, not machine-dumped. More languages as the beta community grows.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>A look inside</h2>
+  <p class="lede">Swipe through the app.</p>
+  <div class="shots">
+    <figure>
+      <img src="shots/01_privacy.png" alt="Pausely onboarding screen explaining that data never leaves your phone" loading="lazy" width="1080" height="2160">
+      <figcaption>Private by design</figcaption>
+    </figure>
+    <figure>
+      <img src="shots/02_today.png" alt="The Today screen with symptom severity ratings and trigger tags" loading="lazy" width="1080" height="2160">
+      <figcaption>Log in seconds</figcaption>
+    </figure>
+    <figure>
+      <img src="shots/03_trends.png" alt="The Trends screen showing symptom charts and correlation insight cards" loading="lazy" width="1080" height="2160">
+      <figcaption>Find your triggers</figcaption>
+    </figure>
+    <figure>
+      <img src="shots/04_report.png" alt="The doctor report screen with a PDF preview" loading="lazy" width="1080" height="2160">
+      <figcaption>Doctor-ready reports</figcaption>
+    </figure>
+    <figure>
+      <img src="shots/05_backup.png" alt="The encrypted backup settings screen" loading="lazy" width="1080" height="2160">
+      <figcaption>Encrypted backups</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Privacy isn't a feature here. It's the architecture.</h2>
+    <p class="lede">Most health apps promise not to misuse your data. Pausely is built so that there's nothing to misuse — because your data never reaches us in the first place.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>No account</h3>
+        <p>Nothing to sign up for. No email, no phone number, no identity.</p>
+      </div>
+      <div class="card">
+        <h3>No backend</h3>
+        <p>There is no Pausely server holding your logs, because there is no Pausely server.</p>
+      </div>
+      <div class="card">
+        <h3>No trackers</h3>
+        <p>No analytics SDK, no ad network, no third-party libraries phoning home.</p>
+      </div>
+      <div class="card">
+        <h3>Deleting is deleting</h3>
+        <p>Remove the app and the data is gone. No "request deletion" form, no 30-day retention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Questions</h2>
+  <p class="lede"></p>
+
+  <details>
+    <summary>Is it really free?</summary>
+    <p>Logging is free and unlimited, along with the last 7 days of history. Premium ($6.99/month, $39.99/year, or $59.99 once) unlocks the Trends screen, unlimited history and PDF reports. During the beta, Premium is free.</p>
+  </details>
+
+  <details>
+    <summary>If there's no cloud, how do I move to a new phone?</summary>
+    <p>Export an encrypted backup from Settings, move the file however you like, and restore it on the new phone with your passphrase. The file is useless to anyone who doesn't have that passphrase — including us.</p>
+  </details>
+
+  <details>
+    <summary>What happens if I lose my backup passphrase?</summary>
+    <p>The backup cannot be opened. There is no recovery, because a recovery mechanism would mean we hold a key — and we don't. Keep the passphrase somewhere safe, like a password manager.</p>
+  </details>
+
+  <details>
+    <summary>Are the insights medical advice?</summary>
+    <p>No. They're plain statistics on your own logs: the app compares your average severity on days with a tag against days without it, and only speaks up when the gap is large enough and there's enough data. Correlation isn't cause, and the app says so on every card.</p>
+  </details>
+
+  <details>
+    <summary>What does the app read from Apple Health / Health Connect?</summary>
+    <p>Sleep, and only if you turn the switch on in Settings. Read-only — Pausely never writes to either store, never saves what it reads, and never includes it in backups. Turning the switch off stops all reads.</p>
+  </details>
+
+  <details>
+    <summary>Is Pausely a medical device?</summary>
+    <p>No. It doesn't diagnose, treat, or give medical advice. It's a notebook that does arithmetic. Talk to a healthcare professional about your symptoms.</p>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    <a href="privacy.html">Privacy Policy</a> ·
+    <a href="mailto:muhammeddolan@gmail.com">Contact</a> ·
+    <a href="mailto:muhammeddolan@gmail.com?subject=Pausely%20beta">Join the beta</a>
+  </p>
+  <p class="disclaimer">Pausely is not a medical device and does not provide medical advice, diagnosis or treatment. Always consult a healthcare professional about your symptoms.</p>
+</footer>
+
 </body>
 </html>

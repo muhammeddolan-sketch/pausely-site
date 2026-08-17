@@ -43,7 +43,7 @@
 <body>
 <header>
   <h1>Pausely Privacy Policy</h1>
-  <p class="updated">Last updated: July 8, 2026 · <a href="index.html">pausely home</a></p>
+  <p class="updated">Last updated: August 7, 2026 · <a href="index.html">pausely home</a></p>
 </header>
 <main>
   <p class="lede">Pausely does not collect your data. Period.</p>
@@ -58,7 +58,24 @@
     <tr><td>Symptom, cycle and trigger logs</td><td>Your device only (local database)</td><td>Only you</td></tr>
     <tr><td>App settings (reminder time, tracked symptoms)</td><td>Your device only</td><td>Only you</td></tr>
     <tr><td>Backups you export</td><td>Wherever you choose to save them</td><td>Only you (encrypted with your passphrase)</td></tr>
+    <tr><td>Sleep read from Apple Health / Health Connect</td><td>Nowhere — held in memory only while the screen is open</td><td>Only you</td></tr>
   </table>
+
+  <h2>Apple Health and Health Connect</h2>
+  <p>Pausely can optionally show last night's sleep next to your symptoms. This is off
+  until you turn it on in <strong>Settings → Health app</strong>, and it works like this:</p>
+  <ul>
+    <li><strong>Read only.</strong> Pausely requests read access to sleep and nothing
+    else. It never requests write access and never writes to Apple Health or Health Connect.</li>
+    <li><strong>Never stored.</strong> Sleep is read when a screen needs it, shown, and
+    then discarded. It is not written to Pausely's database and is not included in
+    encrypted backups.</li>
+    <li><strong>Never transmitted.</strong> Pausely has no server to send it to.</li>
+    <li><strong>Revocable at any time.</strong> Turning the switch off stops all reads.
+    You can also revoke access in Apple Health or Health Connect directly.</li>
+  </ul>
+  <p>Pausely does not use health data for advertising, and does not share it with third
+  parties — there are no third parties.</p>
 
   <h2>Backups</h2>
   <p>When you export a backup, Pausely creates a file encrypted with a passphrase you
